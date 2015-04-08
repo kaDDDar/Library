@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use WeatherBundle\Provider\OpenWeatherMapProvider;
-use WeatherBundle\Provider\YahooWeatherProvider;
 
 class WeatherController extends Controller
 {

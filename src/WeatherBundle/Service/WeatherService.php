@@ -17,6 +17,7 @@ class WeatherService
     {
         $this->provider->setLongitude($longitude);
         $this->provider->setLatitude($latitude);
+
         return $this->provider->getWeatherByLocation();
     }
 }
