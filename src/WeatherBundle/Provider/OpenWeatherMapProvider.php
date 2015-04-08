@@ -3,15 +3,13 @@
 namespace WeatherBundle\Provider;
 
 use WeatherBundle\Provider\WeatherProviderInterface;
+use WeatherBundle\Object\Location;
 
 class OpenWeatherMapProvider implements WeatherProviderInterface
 {
-    protected $longitude;
-    protected $latitude;
-
-    public function getWeatherByLocation()
+    public function getWeatherByLocation(Location $location)
     {
-        $url = "http://api.openweathermap.org/data/2.5/weather?lat={$this->latitude}&lon={$this->longitude}&units=metric";
+        $url = "http://api.openweathermap.org/data/2.5/weather?lat={$location->getLatitude()}&lon={$location->getLongitude()}&units=metric";
         $c = curl_init($url);
         curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
         $responseJson = curl_exec($c);
@@ -19,15 +17,5 @@ class OpenWeatherMapProvider implements WeatherProviderInterface
         $response = json_decode($responseJson);
 
         return $response->main->temp;
-    }
-
-    public function setLongitude($longitude)
-    {
-        $this->longitude = $longitude;
-    }
-
-    public function setLatitude($latitude)
-    {
-        $this->latitude = $latitude;
     }
 }

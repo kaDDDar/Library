@@ -1,9 +1,8 @@
 <?php
 namespace WeatherBundle\Provider;
+use WeatherBundle\Object\Location;
 
 interface WeatherProviderInterface
 {
-    public function getWeatherByLocation();
-    public function setLongitude($longitude);
-    public function setLatitude($latitutde);
+    public function getWeatherByLocation(Location $location);
 }

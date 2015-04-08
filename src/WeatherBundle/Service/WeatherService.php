@@ -3,6 +3,7 @@
 namespace WeatherBundle\Service;
 
 use WeatherBundle\Provider\WeatherProviderInterface;
+use WeatherBundle\Object\Location;
 
 class WeatherService
 {
@@ -13,11 +14,8 @@ class WeatherService
         $this->provider = $provider;
     }
 
-    public function getWeather($latitude, $longitude)
+    public function getWeatherForLocation(Location $location)
     {
-        $this->provider->setLongitude($longitude);
-        $this->provider->setLatitude($latitude);
-
-        return $this->provider->getWeatherByLocation();
+        return $this->provider->getWeatherByLocation($location);
     }
 }
