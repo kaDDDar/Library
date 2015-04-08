@@ -2,12 +2,22 @@
 
 namespace WeatherBundle\Provider;
 
-use WeatherBundle\Provider\WeatherProviderInterface;
 use WeatherBundle\Object\Location;
 use Buzz\Browser;
 
+/**
+ * Class OpenWeatherMapProvider
+ * @package WeatherBundle\Provider
+ */
+
 class OpenWeatherMapProvider implements WeatherProviderInterface
 {
+    /**
+     * Gets weather data from OpenWeatherMap, by location, and returns temperature
+     *
+     * @param Location $location
+     * @return float
+     */
     public function getWeatherByLocation(Location $location)
     {
         $browser = new Browser();
