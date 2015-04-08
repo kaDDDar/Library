@@ -1,0 +1,10 @@
+parameters:
+    nfq.weather_class: WeatherBundle\Service\WeatherService
+    nfq.open_wather_map_provider_class: WeatherBundle\Provider\OpenWeatherMapProvider
+
+services:
+    nfq.weather:
+        class: %nfq.weather_class%
+        arguments: ["@nfq.open_wather_map_provider"]
+    nfq.open_wather_map_provider:
+        class: %nfq.open_wather_map_provider_class%
