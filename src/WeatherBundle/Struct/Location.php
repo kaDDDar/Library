@@ -1,5 +1,5 @@
 <?php
-namespace WeatherBundle\Object;
+namespace WeatherBundle\Struct;
 
 class Location
 {

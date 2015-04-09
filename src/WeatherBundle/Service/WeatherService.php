@@ -3,7 +3,7 @@
 namespace WeatherBundle\Service;
 
 use WeatherBundle\Provider\WeatherProviderInterface;
-use WeatherBundle\Object\Location;
+use WeatherBundle\Struct\Location;
 
 class WeatherService
 {

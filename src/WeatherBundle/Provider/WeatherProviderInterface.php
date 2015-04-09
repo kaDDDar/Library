@@ -1,6 +1,6 @@
 <?php
 namespace WeatherBundle\Provider;
-use WeatherBundle\Object\Location;
+use WeatherBundle\Struct\Location;
 
 /**
  * Interface WeatherProviderInterface
