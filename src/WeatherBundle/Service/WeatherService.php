@@ -19,7 +19,7 @@ class WeatherService
      * Returns temperature of location provided
      *
      * @param Location $location
-     * @return mixed
+     * @return float
      */
     public function getWeatherForLocation(Location $location)
     {

@@ -6,6 +6,10 @@ class Location
     protected $longitude;
     protected $latitude;
 
+    /**
+     * @param float $latitude
+     * @param float $longitude
+     */
     public function __construct($latitude, $longitude)
     {
         $this->latitude = $latitude;
@@ -15,7 +19,7 @@ class Location
     /**
      * Get Longitude
      *
-     * @return mixed
+     * @return float
      */
     public function getLongitude()
     {
@@ -25,7 +29,7 @@ class Location
     /**
      * Get Latitude
      *
-     * @return mixed
+     * @return float
      */
     public function getLatitude()
     {
