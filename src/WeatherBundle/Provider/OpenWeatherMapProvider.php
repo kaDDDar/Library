@@ -2,8 +2,10 @@
 
 namespace WeatherBundle\Provider;
 
-use WeatherBundle\Struct\Location;
 use Buzz\Browser;
+use WeatherBundle\Parser\WeatherParserInterface;
+use WeatherBundle\Struct\Location;
+
 
 /**
  * Class OpenWeatherMapProvider
@@ -12,14 +14,22 @@ use Buzz\Browser;
 
 class OpenWeatherMapProvider implements WeatherProviderInterface
 {
+    /** @var  Browser $browser */
+    protected $browser;
+
+    /** @var WeatherParserInterface $parser */
+    protected $parser;
+
     /**
-     * Inject Buzz browser service
+     * Inject Dependencies
      *
      * @param Browser $browser
+     * @param WeatherParserInterface $parser
      */
-    public function __construct(Browser $browser)
+    public function __construct(Browser $browser, WeatherParserInterface $parser)
     {
         $this->browser = $browser;
+        $this->parser = $parser;
     }
 
     /**
@@ -31,9 +41,8 @@ class OpenWeatherMapProvider implements WeatherProviderInterface
     public function getWeatherByLocation(Location $location)
     {
         $response = $this->browser->get("http://api.openweathermap.org/data/2.5/weather?lat={$location->getLatitude()}&lon={$location->getLongitude()}&units=metric");
-        $contentJson = $response->getContent();
-        $content = json_decode($contentJson);
+        $temp = $this->parser->getTemp($response);
 
-        return $content->main->temp;
+        return $temp;
     }
 }

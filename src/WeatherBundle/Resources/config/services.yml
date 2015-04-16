@@ -1,7 +1,7 @@
 parameters:
     nfq.weather_class: WeatherBundle\Service\WeatherService
     nfq.open_wather_map_provider_class: WeatherBundle\Provider\OpenWeatherMapProvider
-    buzz.browser_class: Buzz\Browser
+    nfq.open_wather_map_parser_class: WeatherBundle\Parser\OpenWeatherMapParser
 
 services:
     nfq.weather:
@@ -9,4 +9,8 @@ services:
         arguments: ["@nfq.open_wather_map_provider"]
     nfq.open_wather_map_provider:
         class: %nfq.open_wather_map_provider_class%
-        arguments: ["@buzz"]
+        arguments:
+            - @buzz
+            - @nfq.open_weather_map_parser
+    nfq.open_weather_map_parser:
+        class: %nfq.open_wather_map_parser_class%
