@@ -9,6 +9,4 @@ services:
         arguments: ["@nfq.open_wather_map_provider"]
     nfq.open_wather_map_provider:
         class: %nfq.open_wather_map_provider_class%
-        arguments: ["@buzz.browswer"]
-    buzz.browswer:
-        class: %buzz.browser_class%
+        arguments: ["@buzz"]
